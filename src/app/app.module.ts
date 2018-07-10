@@ -6,12 +6,16 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { LoginComponent } from './login/login.component';
 import {AngularIndexedDB} from '../components/angular2-indexeddb';
+//import { ControlMessagesComponent } from './register-form/control-messages.component';
 
+import { ControlMessagesComponent } from '../../src/app/register-form/control-messages.component';
+import { ValidationService } from '../app/register-form/validation.service';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterFormComponent,
-    LoginComponent
+    LoginComponent,
+    ControlMessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +23,7 @@ import {AngularIndexedDB} from '../components/angular2-indexeddb';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ ValidationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

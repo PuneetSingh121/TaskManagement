@@ -1,40 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup,FormControl,Validators} from '@angular/forms';
+import {ValidationService} from './validation.service';
 
 @Component({
-  selector: 'app-register-form,[email][formControlName],[email][formControl],[email][ngModel]',
+  selector: 'app-register-form',
   templateUrl: './register-form.component.html',
   styleUrls: ['./register-form.component.css'],
 })
 
 export class RegisterFormComponent{
 
-  rForm:FormGroup;
-  post:any;
-  employeeCode:string='';
-  employeeEmail:string='';
-  employeePassword:string='';
-
+  userForm: any;
   
-  constructor(private fb:FormBuilder){
-
-    this.rForm=fb.group({
-      'employeeCode':[null,Validators.required],
-      'employeeEmail':[null,[
-        Validators.required,
-        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]
-      ],
-      'employeePassword':[null,Validators.compose([Validators.required,Validators.minLength(10)])],
+  constructor(private formBuilder: FormBuilder) {
+      
+    this.userForm = this.formBuilder.group({
+      'employeeCode': ['', Validators.required],
+      'employeeEmail': ['', [Validators.required, ValidationService.emailValidator]],
+      'employeePassword': ['', [Validators.required, Validators.minLength(10),ValidationService.passwordValidator]]
     });
+
+    console.log(this.userForm);
   }
 
-
-  
-  register1='';
-  register(){
-      this.register1="You have registered successfully";
-      console.log(this.register1); 
-  }  
-
+  saveUser() {
+    if (this.userForm.dirty && this.userForm.valid) {
+      alert(`Code: ${this.userForm.value.employeeCode} Email: ${this.userForm.value.employeeEmail} Password: ${this.userForm.value.employeePassword}`);
+    }
+  }
   
 }

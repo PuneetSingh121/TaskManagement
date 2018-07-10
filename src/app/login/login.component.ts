@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup,FormControl,Validators} from '@angular/forms';
+import {ValidationService} from '../register-form/validation.service';
 
 @Component({
   selector: 'app-login',
@@ -8,21 +9,22 @@ import {FormBuilder,FormGroup,FormControl,Validators} from '@angular/forms';
 })
 export class LoginComponent {
 
-  lForm:FormGroup;
-  post:any;
-  employeeEmail:string='';
-  employeePassword:string='';
-
   
-  constructor(private fb:FormBuilder){
-
-    this.lForm=fb.group({
-      'employeeEmail':[null,[
-        Validators.required,
-        Validators.pattern("[^ @]*@[^ @]*")]
-      ],
-      'employeePassword':[null,Validators.compose([Validators.required,Validators.minLength(10)])],
+  loginForm: any;
+  
+  constructor(private formBuilder: FormBuilder) {
+      
+    this.loginForm = this.formBuilder.group({
+      'employeeEmail': ['', [Validators.required, ValidationService.emailValidator]],
+      'employeePassword': ['', [Validators.required, Validators.minLength(10),ValidationService.passwordValidator]]
     });
- 
+
+    console.log(this.loginForm);
+  }
+
+  loginUser() {
+    if (this.loginForm.dirty && this.loginForm.valid) {
+      alert(`Email: ${this.loginForm.value.employeeEmail} Password: ${this.loginForm.value.employeePassword}`);
+    }
   }
 }
