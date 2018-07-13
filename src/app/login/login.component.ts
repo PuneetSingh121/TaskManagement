@@ -18,13 +18,22 @@ export class LoginComponent {
       'employeeEmail': ['', [Validators.required, ValidationService.emailValidator]],
       'employeePassword': ['', [Validators.required, Validators.minLength(10),ValidationService.passwordValidator]]
     });
-
-    console.log(this.loginForm);
   }
+   
+  employeeData = {
+    email: '',
+    password:'',
+  };
 
   loginUser() {
     if (this.loginForm.dirty && this.loginForm.valid) {
-      alert(`Email: ${this.loginForm.value.employeeEmail} Password: ${this.loginForm.value.employeePassword}`);
-    }
-  }
+      
+      this.employeeData.email = this.loginForm.value.employeeEmail;
+      this.employeeData.password = this.loginForm.value.employeePassword;
+
+      console.log(this.employeeData); 
+      alert(this.employeeData.email);  
+      }
+      }
+
 }

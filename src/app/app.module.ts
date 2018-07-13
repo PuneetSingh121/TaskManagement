@@ -5,9 +5,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { LoginComponent } from './login/login.component';
-import {AngularIndexedDB} from '../components/angular2-indexeddb';
 //import { ControlMessagesComponent } from './register-form/control-messages.component';
-
+import {AngularIndexedDB} from 'angular2-indexeddb';
 import { ControlMessagesComponent } from '../../src/app/register-form/control-messages.component';
 import { ValidationService } from '../app/register-form/validation.service';
 @NgModule({

@@ -1,11 +1,9 @@
 <div>
   <form [formGroup]="loginForm" (submit)="loginUser()">
       <div style="margin-left:55%; margin-top:-40px; margin-bottom:15px;">
-        <input type="text" formControlName="employeeEmail"  style="border-radius:5px; margin-right:10px;" placeholder="Employee Email">
+        <input type="text" formControlName="employeeEmail"  id ="employeeEmail1" style="border-radius:5px; margin-right:10px;" placeholder="Employee Email">
         
-        
-        <input type="text" formControlName="employeePassword" style="border-radius:5px;" placeholder="Employee Password">
-        
+        <input type="password" formControlName="employeePassword" id="employeePassword1"  style="border-radius:5px;" placeholder="Employee Password">
         
         
           <button class="btn btn-success" style="margin-left:5px; line-height:15px; margin-bottom:4px;" [disabled]="!loginForm.valid">Log In</button>

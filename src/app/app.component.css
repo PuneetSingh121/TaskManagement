@@ -6,13 +6,15 @@ h1{
     margin-left:100px;
 }
 nav{
-    background-image: url(../assets/u8zst.jpg);
+    background-color:#FF6347;
+    background-image: url("../assets/car1.jpg");
+    background-size:100%;
     background-repeat: no-repeat;
-    
     padding:2px;
+    
 }
 .back{
-    background-image:url(../assets/049.png);
+    background-color:lightblue;
     background-size:1080px 2000px;
 }
 img{
@@ -21,5 +23,5 @@ img{
     border-radius:10%;
     margin-left:30px;
     height:500px;
-    width:90%;
+    width:95%;
 }
