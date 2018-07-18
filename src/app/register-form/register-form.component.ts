@@ -39,40 +39,39 @@ export class RegisterFormComponent{
           console.log(this.employeeData);
       }
 
-      var employees=[
-        { code:this.employeeData.code ,
-          email:this.employeeData.email,
-          password:this.employeeData.password}
-      ];
+      //var employees=[
+       // { code:this.employeeData.code ,
+         // email:this.employeeData.email,
+          //password:this.employeeData.password}
+      //];
 
         
         if(window.indexedDB){
           console.log('IndexedDB is supported');
           }
-
+          
       
         const DB_NAME = 'TaskManagement';
-        const DB_VERSION = 1; // Use a long long for this value (don't use a float)
+        var DB_VERSION = 1; // Use a long long for this value (don't use a float)
         const DB_STORE_NAME = 'employees';
 
         var db;
 
-          var employeeData1 = this.employeeData;
+        var employeeData1 = this.employeeData;
 
-        // function openDb() {
+        
           console.log("openDb ...");
+
           var req = indexedDB.open(DB_NAME, DB_VERSION);
           console.log(req);
+          
           req.onsuccess = function (evt) {
-            
             db = this.result;
+            console.log(db);
             console.log("openDb DONE");
-            //
             console.log(this);
-             
-           addPublication(employeeData1.code ,employeeData1.email,employeeData1.password);
-
-            //
+            addPublication(employeeData1.code ,employeeData1.email,employeeData1.password);
+            alert('Registration done successfully!!!!');  
           };
 
 
@@ -81,9 +80,12 @@ export class RegisterFormComponent{
             console.error("openDb:", evt.target.errorCode);
             alert(evt.target.errorCode);
           };
-
+          
           req.onupgradeneeded = function (evt:any) {
             console.log("openDb.onupgradeneeded");
+            console.log("Old Version: " + evt.oldVersion);
+            console.log("New Version: " + evt.newVersion);
+
             var store = evt.currentTarget.result.createObjectStore(
               DB_STORE_NAME, { keyPath: 'id', autoIncrement: true });
 
@@ -91,20 +93,17 @@ export class RegisterFormComponent{
             store.createIndex('email', 'email', { unique: false });
             store.createIndex('password', 'password', { unique: false });
           };
-        // }
+          
 
         function getObjectStore(store_name, mode) {
           var tx = db.transaction(store_name, mode);
           return tx.objectStore(store_name);
         }
-        // openDb();
+        
 
         
   
         function addPublication(code, email, password) {
-          // console.log(code);
-          // console.log(email);
-          // console.log(password);
           var obj = { code:code, email: email, password: password };
          
           var store = getObjectStore(DB_STORE_NAME, 'readwrite');
@@ -114,7 +113,9 @@ export class RegisterFormComponent{
           
           req.onsuccess = function (evt) {
             console.log("Insertion in DB successful");
+            db.close();
           };
+
           req.onerror = function() {
             console.error("addPublication error", this.error);
             alert(this.error);

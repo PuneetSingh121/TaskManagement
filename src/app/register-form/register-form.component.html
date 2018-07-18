@@ -1,36 +1,55 @@
-<div *ngIf="!name; else forminfo">
-  <form [formGroup]="userForm" (submit)="saveUser()">
-      <div class="form-container">
-        <div class="row columns">
-          <div class="col-md-12">
-           <h2 style="margin-top:40px; margin-left:34%;">Register</h2><br>
+<div>
+  <nav>
+    <a href="http://localhost:4200/"><h1>Broctagon <span style="color:red">Fintech</span>  Group</h1></a>
+    <app-login></app-login>
+  </nav>
+<br>
 
-           <div style="margin-left:30%">
-            <label for="employeeCode" style="margin-left:10%;">Employee Code</label><br>
-              <input type="text" formControlName="employeeCode"   id="employeeCode" style="border-radius:5px;" placeholder="Employee Code"><br>
-               
-            </div><br>
-
-           <div style="margin-left:30%">
-            <label for="employeeEmail" style="margin-left:10%;">Employee Email</label><br>
-              <input type="text" formControlName="employeeEmail" id="employeeEmail" style="border-radius:5px;" placeholder="Employee Email"><br>
-              <control-messages [control]="userForm.controls.employeeEmail"></control-messages>
-           </div><br>
-
-
-           <div style="margin-left:30%">
-            <label for="employeePassword" style="margin-left:10%;">Employee Password</label><br>
-              <input type="password" formControlName="employeePassword" id="employeePassword"  style="border-radius:5px;" placeholder="Employee Password"><br>
-              <control-messages [control]="userForm.controls.employeePassword"></control-messages>
-            </div><br>
-
-           <button class="btn btn-danger" style="margin-left:37%" [disabled]="!userForm.valid">Register</button>
-            </div>
-        </div>
-      </div>
-
-  </form>
-  
+<div class="rows">
+    <div class="col-md-6">
+      <img src="../../assets/TImegif.gif" >
+    </div>
+    
+    <div class="col-md-6" style="float:right; margin-top:-500px;">
+        <div *ngIf="!name; else forminfo">
+            <form [formGroup]="userForm" (submit)="saveUser()">
+                <div class="form-container">
+                  <div class="row columns">
+                    <div class="col-md-12">
+                     <h2 style="margin-top:40px; margin-left:34%;">Register</h2><br>
+          
+                     <div style="margin-left:30%">
+                      <label for="employeeCode" style="margin-left:10%;">Employee Code</label><br>
+                        <input type="text" formControlName="employeeCode"   id="employeeCode" style="border-radius:5px;" placeholder="Employee Code"><br>
+                        <control-messages [control]="userForm.controls.employeeCode"></control-messages>
+                      </div><br>
+          
+                     <div style="margin-left:30%">
+                      <label for="employeeEmail" style="margin-left:10%;">Employee Email</label><br>
+                        <input type="text" formControlName="employeeEmail" id="employeeEmail" style="border-radius:5px;" placeholder="Employee Email"><br>
+                        <control-messages [control]="userForm.controls.employeeEmail"></control-messages>
+                     </div><br>
+          
+          
+                     <div style="margin-left:30%">
+                      <label for="employeePassword" style="margin-left:10%;">Employee Password</label><br>
+                        <input type="password" formControlName="employeePassword" id="employeePassword"  style="border-radius:5px;" placeholder="Employee Password"><br>
+                        <control-messages [control]="userForm.controls.employeePassword"></control-messages>
+                      </div><br>
+          
+                     <button class="btn btn-danger" style="margin-left:37%" [disabled]="!userForm.valid">Register</button>
+                      </div>
+                  </div>
+                </div>
+          
+            </form>
+            
+          </div>
+          
+          
+          
+    </div>
+</div>
 </div>
 
 

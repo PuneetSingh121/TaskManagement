@@ -1,0 +1,53 @@
+<div class="back">
+<div class="container">
+   
+  
+      <form [formGroup]="taskForm" (submit)="saveTasks()">
+          <h1 style="margin-left:35%; margin-top:20px; padding-top:10px; color:white;">Create Task</h1>
+    <div class="row">
+      <div class="col-6">
+            <div style="margin-left:55%; margin-top:50px;" >
+              <label for="TaskName" style="margin-left:20%;  color:white;">Task Name</label><br>
+                <input type="text" formControlName="TaskName"   id="TaskName" style="border-radius:5px; margin-left:2%;" placeholder="Task Name"><br>
+                <control-messages [control]="taskForm.controls.TaskName" style="color:white;"></control-messages>
+              </div>
+    
+              <div style="margin-left:55%; margin-top:50px;">
+                  <label for="StartingDate" style="margin-left:20%;  color:white;">Starting Date</label><br>
+                  <input type="date" formControlName="StartingDate"   id="StartingDate" style="border-radius:5px; margin-left:2%;" placeholder="Starting Date">
+                  <control-messages [control]="taskForm.controls.StartingDate" style="color:white;"></control-messages>  
+                </div>
+    
+      </div>
+
+      <div class="col-6">
+          <div style="margin-top:50px;">
+              <label for="employeeCode" style="margin-left:8%;  color:white;">Employee Code</label><br>
+                <input type="text" formControlName="employeeCode"   id="employeeCode" style="border-radius:5px;  margin-left:2%;" placeholder="Employee Code"><br>
+                <control-messages [control]="taskForm.controls.employeeCode" style="color:white;"></control-messages>
+          </div> 
+
+         
+          
+          <div style=" margin-top:50px;">
+            <label for="EndingDate" style="margin-left:8%;  color:white;">Ending Date</label><br>
+              <input type="date" formControlName="EndingDate"   id="EndingDate" style="border-radius:5px; margin-left:2%;" placeholder="Ending Date"><br> 
+              <control-messages [control]="taskForm.controls.EndingDate" style="color:white;"></control-messages>
+          </div><br><br>
+        </div>
+
+        <div style="margin-left:18%; margin-top:10px;">
+            <label for="TaskDescription" style="margin-left:32%;  color:white;">Task Description</label><br>
+            <textarea type="text" placeholder="Task Description" formControlName="TaskDescription" id="TaskDescription" style="border-radius:5px; width:450px;height:100px; margin-left:25%;"></textarea>
+            <control-messages [control]="taskForm.controls.TaskDescription" style="color:white;"></control-messages>
+        </div>
+          
+        
+    </div>
+        <button class="btn btn-success" style="margin-left:37%" [disabled]="!taskForm.valid">Create</button>
+        <button class="btn btn-primary" style="margin-left:1%">Clear All</button>
+      </form>
+
+    
+</div>
+</div>
